@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Menu from './MenuComponent';
-import Home  from './HomeComponent';
+import Home from './HomeComponent';
 import Dishdetail from './DishDetailComponent';
+import Contact from './ContactComponent';
+import About from './AboutComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
@@ -9,7 +11,7 @@ const MenuNavigator = createStackNavigator({
     Menu: { screen: Menu },
     Dishdetail: { screen: Dishdetail }
 }, {
-    initialRouteName: 'Menu', 
+    initialRouteName: 'Menu',
     navigationOptions: {
         headerStyle: {
             backgroundColor: '#512DA8'
@@ -23,42 +25,88 @@ const MenuNavigator = createStackNavigator({
 
 const HomeNavigator = createStackNavigator({
     Home: { screen: Home }
-  }, {
+}, {
     navigationOptions: ({ navigation }) => ({
-      headerStyle: {
-          backgroundColor: "#512DA8"
-      },
-      headerTitleStyle: {
-          color: "#fff"            
-      },
-      headerTintColor: "#fff"  
+        headerStyle: {
+            backgroundColor: "#512DA8"
+        },
+        headerTitleStyle: {
+            color: "#fff"
+        },
+        headerTintColor: "#fff"
+    })
+});
+
+const AboutNavigator = createStackNavigator({
+    About: { screen: About }
+}, {
+    navigationOptions: ({ navigation }) => ({
+        headerStyle: {
+            backgroundColor: "#512DA8"
+        },
+        headerTitleStyle: {
+            color: "#fff"
+        },
+        headerTintColor: "#fff"
+    })
+});
+
+const ContactNavigator = createStackNavigator({
+    Contact: { screen: Contact }
+}, {
+    navigationOptions: ({ navigation }) => ({
+        headerStyle: {
+            backgroundColor: "#512DA8"
+        },
+        headerTitleStyle: {
+            color: "#fff"
+        },
+        headerTintColor: "#fff"
     })
 });
 
 const MainNavigator = createDrawerNavigator({
-    Home: 
-      { screen: HomeNavigator,
+    Home:
+    {
+        screen: HomeNavigator,
         navigationOptions: {
-          title: 'Home',
-          drawerLabel: 'Home'
+            title: 'Home',
+            drawerLabel: 'Home'
         }
-      },
-    Menu: 
-      { screen: MenuNavigator,
+    },
+    About:
+    {
+        screen: AboutNavigator,
         navigationOptions: {
-          title: 'Menu',
-          drawerLabel: 'Menu'
-        }, 
-      }
+            title: 'About',
+            drawerLabel: 'About'
+        }
+    },
+    Contact:
+    {
+        screen: ContactNavigator,
+        navigationOptions: {
+            title: 'Contact',
+            drawerLabel: 'Contact'
+        }
+    },
+    Menu:
+    {
+        screen: MenuNavigator,
+        navigationOptions: {
+            title: 'Menu',
+            drawerLabel: 'Menu'
+        },
+    }
 }, {
-  drawerBackgroundColor: '#D1C4E9'
+    drawerBackgroundColor: '#D1C4E9'
 });
 
 class Main extends Component {
 
     render() {
         return (
-            <View style={{flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}>
+            <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
                 <MainNavigator />
             </View>
         );
