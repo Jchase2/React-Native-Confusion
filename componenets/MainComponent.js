@@ -7,6 +7,24 @@ import About from './AboutComponent';
 import { View, Platform, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
+
+const mapStateToProps = state => {
+    return {
+      dishes: state.dishes,
+      comments: state.comments,
+      promotions: state.promotions,
+      leaders: state.leaders
+    }
+  }
+
+const mapDispatchToProps = dispatch => ({
+    fetchDishes: () => dispatch(fetchDishes()),
+    fetchComments: () => dispatch(fetchComments()),
+    fetchPromos: () => dispatch(fetchPromos()),
+    fetchLeaders: () => dispatch(fetchLeaders()),
+})
 
 const MenuNavigator = createStackNavigator({
     Menu: {
@@ -77,10 +95,10 @@ const CustomDrawerContentComponent = (props) => (
     <ScrollView>
         <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
             <View style={styles.drawerHeader}>
-                <View style={{flex: 1}}>
+                <View style={{ flex: 1 }}>
                     <Image source={require('./images/logo.png')} style={styles.drawerImage} />
                 </View>
-                <View style={{flex: 2}}>
+                <View style={{ flex: 2 }}>
                     <Text style={styles.drawerHeaderText}>Ristorante Con Fusion</Text>
                 </View>
             </View>
@@ -140,7 +158,12 @@ const MainNavigator = createDrawerNavigator({
 });
 
 class Main extends Component {
-
+    componentDidMount() {
+        this.props.fetchDishes();
+        this.props.fetchComments();
+        this.props.fetchPromos();
+        this.props.fetchLeaders();
+    }
     render() {
         return (
             <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
@@ -158,10 +181,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#512DA8',
         height: 140,
         alignItems: 'center',
-        justifyContent: 'center', 
+        justifyContent: 'center',
         flex: 1,
         flexDirection: 'row'
-    }, 
+    },
     drawHeaderText: {
         color: 'white',
         fontSize: 24,
@@ -169,9 +192,9 @@ const styles = StyleSheet.create({
     },
     drawerImage: {
         margin: 10,
-        width: 80, 
+        width: 80,
         height: 60
     }
 })
 
-export default Main;
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
