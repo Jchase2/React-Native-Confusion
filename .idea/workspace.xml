@@ -1,14 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="21c70c6c-53fc-4a98-a65e-1e5c5ca81043" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/componenets/AboutComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/componenets/AboutComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/componenets/DishDetailComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/componenets/DishDetailComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/componenets/HomeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/componenets/HomeComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/componenets/MainComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/componenets/MainComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/componenets/MenuComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/componenets/MenuComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/ActionCreators.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/ActionCreators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/ActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/ActionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/dishes.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/dishes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/leaders.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/leaders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/promotions.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/promotions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/baseUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/shared/baseUrl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="94" />
-    <option name="y" value="25" />
+    <option name="x" value="207" />
+    <option name="y" value="47" />
     <option name="width" value="1400" />
     <option name="height" value="820" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="21c70c6c-53fc-4a98-a65e-1e5c5ca81043" name="Default Changelist" comment="" />
+      <created>1580926829616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580926829616</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="207" y="47" width="1400" height="820" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32966226" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Resources Explorer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Palette&#9;" />
+    </layout>
   </component>
 </project>
