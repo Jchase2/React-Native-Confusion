@@ -3,7 +3,7 @@ import { View, Text, ScrollView, FlatList, Button, Modal, StyleSheet } from 'rea
 import { Card, Icon, Rating, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
-import { postFavorite } from '../redux/ActionCreators';
+import { postFavorite, postComment } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    postFavorite: (dishId) => dispatch(postFavorite(dishId))
+    postFavorite: (dishId) => dispatch(postFavorite(dishId)),
+    postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
 });
 
 function RenderDish(props) {
@@ -47,7 +48,12 @@ function RenderComments(props) {
         return (
             <View key={index} style={{ margin: 10 }}>
                 <Text style={{ fontSize: 14 }}>{item.comment}</Text>
-                <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
+                <Rating
+                    imageSize={20}
+                    readonly
+                    startingValue={item.rating}
+                    style={styles.starAlign}
+                />
                 <Text style={{ fontSize: 12 }}>{'-- ' + item.author + ', ' + item.date}</Text>
             </View>
         );
@@ -64,7 +70,7 @@ class DishDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Rating: '',
+            Rating: 5,
             Author: '',
             Comment: '',
             showModal: false
@@ -85,11 +91,22 @@ class DishDetail extends Component {
 
     resetForm() {
         this.setState({
-            Rating: '',
+            Rating: 0,
             Author: '',
             Comment: '',
             showModal: false
         });
+    }
+
+    ratingCompleted = (rating) => {
+        const newRating = rating;
+        console.log(newRating);
+        this.setState({ Rating: newRating })
+    }
+
+    handleComment = (dishId, rating, author, comment) => {
+        this.props.postComment(dishId, rating, author, comment);
+        this.toggleModal();
     }
 
     render() {
@@ -110,9 +127,11 @@ class DishDetail extends Component {
                     <View style={styles.modal}>
                         <Rating
                             startingValue={10}
+                            defaultRating={10}
                             showRating
                             style={{ paddingVertical: 10 }}
                             size={1}
+                            onFinishRating={this.ratingCompleted}
                         />
                         <Input
                             placeholder='Author'
@@ -124,16 +143,16 @@ class DishDetail extends Component {
                             placeholder='Comment'
                             leftIcon={{ type: 'font-awesome', name: 'comment' }}
                             value={this.state.Comment}
-                            onChangeText={comment => this.setState({ Comment: comment })}                        />
+                            onChangeText={comment => this.setState({ Comment: comment })} />
                         <Text style={styles.modalText}>Comment: {this.state.comment}</Text>
-                        <View style={{marginBottom: 10}}>
-                            <Button onPress={() => {this.toggleModal(); this.resetForm(); alert(this.state.Comment) }}
+                        <View style={{ marginBottom: 10 }}>
+                            <Button onPress={() => { this.handleComment(dishId, this.state.Rating, this.state.Author, this.state.Comment); }}
                                 color="#512DA8"
                                 title="Submit"
                             />
                         </View>
                         <Button
-                            onPress={() => {this.setComment(commentInput); this.toggleModal(); this.resetForm(); }}
+                            onPress={() => { this.toggleModal(); this.resetForm(); }}
                             color="#512DA8"
                             title="Close"
                         />
@@ -163,6 +182,10 @@ const styles = StyleSheet.create({
     },
     btnCenter: {
         justifyContent: 'center',
+        flexDirection: 'row'
+    },
+    starAlign: {
+        justifyContent: 'flex-start',
         flexDirection: 'row'
     }
 });
