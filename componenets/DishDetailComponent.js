@@ -22,14 +22,16 @@ const mapDispatchToProps = dispatch => ({
 function RenderDish(props) {
     const dish = props.dish;
 
+    handleViewRef = ref => this.view = ref;
+
     const recognizeDrag = ({ moveX, moveY, dx, dy }) => {
         if (dx < -200)
             return true;
+        else if (dx > 200)
+            return true
         else
             return false;
     }
-
-    handleViewRef = ref => this.view = ref;
 
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: (e, gestureState) => {
@@ -42,15 +44,21 @@ function RenderDish(props) {
         onPanResponderEnd: (e, gestureState) => {
             console.log("pan responder end", gestureState);
             if (recognizeDrag(gestureState))
-                Alert.alert(
-                    'Add Favorite',
-                    'Are you sure you wish to add ' + dish.name + ' to favorite?',
-                    [
-                        { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-                        { text: 'OK', onPress: () => { props.favorite ? console.log('Already favorite') : props.onPress() } },
-                    ],
-                    { cancelable: false }
-                );
+                if (gestureState.dx < -200){
+                    Alert.alert(
+                        'Add Favorite',
+                        'Are you sure you wish to add ' + dish.name + ' to favorite?',
+                        [
+                            { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                            { text: 'OK', onPress: () => { props.favorite ? console.log('Already favorite') : props.onPress() } },
+                        ],
+                        { cancelable: false }
+                    );
+                }
+                else if(gestureState.dx > 200){
+                    // This is toggleModal() but passed in as onPressTwo via props. 
+                    props.onPressTwo();
+                }
 
             return true;
         }
@@ -117,6 +125,7 @@ class DishDetail extends Component {
             Comment: '',
             showModal: false
         }
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     markFavorite(dishId) {
