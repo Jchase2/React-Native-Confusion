@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21c70c6c-53fc-4a98-a65e-1e5c5ca81043" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/componenets/FavoriteComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/componenets/FavoriteComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/ActionCreators.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/ActionCreators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/ActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/ActionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/favorites.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/favorites.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +25,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -65,7 +60,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="207" y="47" width="1400" height="820" extended-state="0" />
+    <frame x="141" y="57" width="1400" height="820" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32966226" />

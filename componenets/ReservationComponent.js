@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import * as Animatable from 'react-native-animatable';
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 
 class Reservation extends Component {
 
@@ -20,19 +22,56 @@ class Reservation extends Component {
         title: 'Reserve Table',
     };
 
+    async componentDidMount() {
+        const { status } = await Permissions.getAsync(Permissions.USER_FACING_NOTIFICATIONS);
+        if (status !== 'granted') {
+            Alert.alert('Hey! You might want to enable notifications for my app, they are good.');
+        }
+        else if (status === 'granted') {
+            console.log('Granted!');
+        }
+        const { statusTwo } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        if (status !== 'granted') {
+            Alert.alert('Hey! You might want to enable notifications for my app, they are good.');
+        }
+        else if (status === 'granted') {
+            console.log('Granted!');
+        }
+    }
+
+
+    async presentMyNotification(date) {
+        await this.componentDidMount();
+        Notifications.presentLocalNotificationAsync({
+            title: 'Your Reservation',
+            body: 'Reservation for ' + date + ' requested',
+            ios: {
+                sound: true
+            },
+            android: {
+                sound: true,
+                vibrate: true,
+                color: '#512DA8'
+            }
+        })
+    }
+
     handleReservation() {
+
         console.log(JSON.stringify(this.state));
         let smoke = this.state.smoking ? 'Yes' : 'No';
         Alert.alert(
             'Your Reservation',
-            'Number of Guests: ' + this.state.guests + '\n' + 'Smoking? ' + smoke  + '\n' +
+            'Number of Guests: ' + this.state.guests + '\n' + 'Smoking? ' + smoke + '\n' +
             'Date and Time: ' + this.state.date,
             [
-                { text: 'Ok', onPress: () => this.resetForm },
+                { text: 'Ok', onPress: () => {this.presentMyNotification(this.state.date); this.resetForm()} },
                 { text: 'Cancel', onPress: () => this.resetForm, style: 'cancel' }
             ]
         )
     }
+
+
 
     resetForm() {
         this.setState({
