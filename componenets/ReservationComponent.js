@@ -4,6 +4,7 @@ import DatePicker from 'react-native-datepicker'
 import * as Animatable from 'react-native-animatable';
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
+import * as Calendar from 'expo-calendar';
 
 class Reservation extends Component {
 
@@ -28,17 +29,47 @@ class Reservation extends Component {
             Alert.alert('Hey! You might want to enable notifications for my app, they are good.');
         }
         else if (status === 'granted') {
-            console.log('Granted!');
+            console.log('User facing notifications Granted!');
         }
         const { statusTwo } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
         if (status !== 'granted') {
             Alert.alert('Hey! You might want to enable notifications for my app, they are good.');
         }
         else if (status === 'granted') {
-            console.log('Granted!');
+            console.log('Notifications Granted!');
         }
     }
 
+    async obtainCalendarPermission(){
+        const { status } = await Calendar.requestCalendarPermissionsAsync();
+        if (status === 'granted') {
+            console.log("Calendar permissions Granted")
+        }
+        else {
+            console.log("Not granted.")
+        }
+    }
+
+    async addReservationToCalendar(date){
+        let newDate = new Date(Date.parse(date));
+        let newDateEnd = new Date(Date.parse(date) + 7200000)
+        await this.obtainCalendarPermission();
+        const calendars = await Calendar.getCalendarsAsync();
+        let defaultCalendar = calendars.filter(each => each.isPrimary && each.allowsModifications);
+        // If there's no default calendar I'm just gonna take the first calendar listed that allows modification :/
+        if(defaultCalendar.id === undefined){
+            console.log("No default calendar!");
+            defaultCalendars = calendars.filter(each => each.allowsModifications);
+            defaultCalendar = defaultCalendars[0];
+        }
+        Calendar.createEventAsync(defaultCalendar.id, {
+            title: 'Con Fusion Table Reservation',
+            startDate: newDate,
+            endDate: newDate,
+            timeZone: 'Asia/Hong_Kong',
+            location: '121, Clear Water Bay Road, Clear Water Bay, Kowloon, Hong Kong'
+        });
+    }
 
     async presentMyNotification(date) {
         await this.componentDidMount();
@@ -69,6 +100,7 @@ class Reservation extends Component {
                 { text: 'Cancel', onPress: () => this.resetForm, style: 'cancel' }
             ]
         )
+        this.addReservationToCalendar(this.state.date);
     }
 
 
